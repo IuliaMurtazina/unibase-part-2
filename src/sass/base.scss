@@ -1,0 +1,67 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,200;0,400;0,500;0,600;0,700;1,400&display=swap');
+
+////////////////////////////////////////
+// Variables
+
+$color-main-black: #000;
+$color-main-white: #fff;
+$color-main-gray: #565656;
+
+$color-light-gray: #F9F9F9;
+
+$color-primary: #25a773;
+
+$color-error: #8b0000;
+
+$stroke-table: #e7e7e7;
+
+$font-size-primary: 1.6rem;
+
+////////////////////////////////////////
+// MEDIA QUERY MANAGER
+
+$tablet: 768px;
+$phone-big: 480px;
+
+////////////////////////////////////////
+// Mixins
+
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+}
+
+@mixin vert-flex {
+  display: flex;
+  flex-direction: column;
+}
+
+////////////////////////////////////////
+// Root
+
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Raleway', sans-serif;
+}
+
+html {
+  font-size: 62.5%;
+  scroll-behavior: smooth;
+}
+
+body {
+  max-width: 112rem;
+  margin: 0 auto;
+  font-size: $font-size-primary;
+  font-weight: 400;
+  padding: 2rem;
+
+  @media only screen and (max-width: $phone-big) {
+    padding: 2rem 1rem;
+    font-size: 1.4rem;
+  }
+}

@@ -1,0 +1,137 @@
+.table-container {
+  overflow-x: scroll;
+
+  &::-webkit-scrollbar {
+    width: 1rem;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    height: 1px;
+    border-radius: 5rem;
+    border: 5px solid transparent;
+    background-clip: padding-box;
+    background-color: $color-primary;
+  }
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+
+  &__body {
+    border: 1px solid $stroke-table;
+  }
+
+  &__header {
+    background-color: $color-primary;
+    color: $color-main-white;
+    font-weight: 700;
+    padding: 1rem;
+    text-transform: uppercase;
+    cursor: pointer;
+
+    &::after {
+      content: '\1F817';
+      margin-left: 0.5rem;
+      opacity: 0;
+    }
+
+    &.sorted-asc {
+      &::after {
+        content: '\1F817';
+        opacity: 1;
+      }
+    }
+
+    &.sorted-desc {
+      &::after {
+        content: '\1F815';
+        opacity: 1;
+      }
+    }
+  }
+
+  &__cell {
+    border-spacing: 0;
+    font-weight: 500;
+    padding: 1rem;
+    vertical-align: top;
+    border-bottom: 1px solid $stroke-table;
+
+    &--error {
+      text-align: center;
+      color: $color-error;
+      font-weight: 700;
+    }
+
+    &--loading {
+      text-align: center;
+      position: relative;
+
+      &::after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        width: 20px;
+        height: 20px;
+        border: 3px solid $color-main-gray;
+        border-top: 3px solid $color-primary;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+        margin-top: -1rem;
+        margin-left: 1rem;
+
+        @keyframes spin {
+          0% {
+            transform: rotate(0deg);
+          }
+
+          100% {
+            transform: rotate(360deg);
+          }
+        }
+      }
+    }
+  }
+
+  &__header,
+  &__cell {
+    &:nth-child(1), &:nth-child(2) {
+      width: 10%;
+      min-width: 9.5rem;
+    }
+
+    &:nth-child(3) {
+      min-width: 20rem;
+      width: 15%;
+    }
+
+    &:nth-child(4) {
+      width: 100%;
+      min-width: 40rem;
+    }
+
+    @media only screen and (max-width: $phone-big) {
+      &:nth-child(1), &:nth-child(2) {
+        min-width: 9rem;
+      }
+  
+      &:nth-child(3) {
+        min-width: 16rem;
+      }
+
+      &:nth-child(4) {
+        min-width: 25rem;
+      }
+    }
+  }
+}
+
+.table .table__cell--error,
+.table .table__cell--loading {
+  width: 100%;
+}
