@@ -1,12 +1,14 @@
 import { postsData } from "./fetchPosts";
 import { renderPosts } from "./renderPosts";
+import { currentSearchText } from "./searchPosts";
+import { filterDataHandler } from "./searchPosts";
 
 let sortedHeader = "";
 export let sortedData = [];
 
 const tableHeaders = document.querySelectorAll(".table__header");
 
-const sortData = (columnName, sortOrder) => {
+const sortDataHandler = (columnName, sortOrder) => {
   sortedData = [...postsData];
 
   sortedData.sort((a, b) => {
@@ -28,7 +30,11 @@ const sortData = (columnName, sortOrder) => {
     }
   });
 
-  renderPosts(false, sortedData);
+  if (currentSearchText) {
+    filterDataHandler(currentSearchText, sortedData);
+  } else {
+    renderPosts(false, sortedData);
+  }
 };
 
 tableHeaders.forEach((header) => {
@@ -52,6 +58,6 @@ tableHeaders.forEach((header) => {
       header.classList.add("sorted-asc");
       header.classList.remove("sorted-desc");
     }
-    sortData(header.id, sortOrder);
+    sortDataHandler(header.id, sortOrder);
   });
 });

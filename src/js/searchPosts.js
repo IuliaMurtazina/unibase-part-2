@@ -2,13 +2,16 @@ import { postsData } from "./fetchPosts";
 import { renderPosts } from "./renderPosts";
 import { sortedData } from "./sortPosts";
 
-function filterDataHandler(searchText, data) {
-  const filteredData = data.filter((item) => {
+export let filteredData = [];
+export let currentSearchText = "";
+
+export function filterDataHandler(searchText, data) {
+  currentSearchText = searchText;
+  filteredData = data.filter((item) => {
     const itemAsString = JSON.stringify(item).toLowerCase();
     return itemAsString.includes(searchText.toLowerCase());
   });
 
-  console.log(filteredData);
   renderPosts(false, filteredData, true);
 }
 

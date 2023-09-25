@@ -35,21 +35,21 @@
     cursor: pointer;
 
     &::after {
-      content: '\1F817';
+      content: '\2193';
       margin-left: 0.5rem;
       opacity: 0;
     }
 
     &.sorted-asc {
       &::after {
-        content: '\1F817';
+        content: '\2193';
         opacity: 1;
       }
     }
 
     &.sorted-desc {
       &::after {
-        content: '\1F815';
+        content: '\2191';
         opacity: 1;
       }
     }
